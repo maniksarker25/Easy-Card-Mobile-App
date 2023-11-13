@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'root.dart';
-
+import 'anotherPage.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -88,11 +88,22 @@ class _MyHomePageState extends State<MyHomePage> {
       //   // the App.build method, and use it to set our appbar title.
       //   title: Text(widget.title),
       // ),
-      body:        MyComponent(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+       body: MyComponent(),
+      floatingActionButton: ElevatedButton.icon(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => AnotherPage()),
+          );
+        },
+        icon: Icon(Icons.send, color: Colors.white),
+        label: Text(
+          "Send",
+          style: TextStyle(color: Colors.white, fontSize: 20),
+        ),
+        style: ElevatedButton.styleFrom(
+          primary: Colors.black,
+        ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
