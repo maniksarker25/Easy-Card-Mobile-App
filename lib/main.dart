@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'root.dart';
 import 'anotherPage.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -88,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
       //   // the App.build method, and use it to set our appbar title.
       //   title: Text(widget.title),
       // ),
-       body: MyComponent(),
+      body: MyComponent(),
       floatingActionButton: ElevatedButton.icon(
         onPressed: () {
           Navigator.push(
