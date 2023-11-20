@@ -12,7 +12,8 @@ class AnotherPage extends StatelessWidget {
         backgroundColor: Colors.black, // Set app bar background color
         iconTheme: IconThemeData(color: Colors.white), // Set app bar icon color
       ),
-      backgroundColor: Colors.black, // Set the background color for the entire page
+      backgroundColor:
+          Colors.black, // Set the background color for the entire page
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -38,7 +39,8 @@ class AnotherPage extends StatelessWidget {
               margin: EdgeInsets.symmetric(horizontal: 30),
               child: Text(
                 "Point your camera at the QR code to receive the card",
-                style: TextStyle(fontSize: 20, color: Colors.white), // Set text color
+                style: TextStyle(
+                    fontSize: 20, color: Colors.white), // Set text color
                 textAlign: TextAlign.center,
               ),
             ),
@@ -52,7 +54,8 @@ class AnotherPage extends StatelessWidget {
               children: [
                 // Example button 1 (Top and Bottom border radius) with margin-bottom
                 Container(
-                  margin: EdgeInsets.only(bottom: 15),  // Add margin-bottom for the first button
+                  margin: EdgeInsets.only(
+                      bottom: 15), // Add margin-bottom for the first button
                   child: ElevatedButton.icon(
                     onPressed: () {
                       // Add your action here
@@ -66,19 +69,24 @@ class AnotherPage extends StatelessWidget {
                         ), // Set button border radius
                       ),
                     ),
-                    icon: Icon(Icons.share, color: Colors.white), // Set icon color
+                    icon: Icon(Icons.share,
+                        color: Colors.white), // Set icon color
                     label: Row(
                       mainAxisAlignment: MainAxisAlignment.start, // Align left
                       children: [
-                        SizedBox(width: 8), // Add some space between icon and text
-                        Text('Share contact details', style: TextStyle(color: Colors.white)), // Set text color
+                        SizedBox(
+                            width: 8), // Add some space between icon and text
+                        Text('Share contact details',
+                            style: TextStyle(
+                                color: Colors.white)), // Set text color
                       ],
                     ),
                   ),
                 ),
                 // Example button 2 (Top border radius) with margin-bottom
                 Container(
-                  margin: EdgeInsets.only(bottom: 3),  // Add margin-bottom for the second button
+                  margin: EdgeInsets.only(
+                      bottom: 3), // Add margin-bottom for the second button
                   child: ElevatedButton.icon(
                     onPressed: () {
                       // Add your action here
@@ -92,19 +100,24 @@ class AnotherPage extends StatelessWidget {
                         ), // Set button border radius
                       ),
                     ),
-                    icon: Icon(Icons.copy, color: Colors.white), // Set icon color
+                    icon:
+                        Icon(Icons.copy, color: Colors.white), // Set icon color
                     label: Row(
                       mainAxisAlignment: MainAxisAlignment.start, // Align left
                       children: [
-                        SizedBox(width: 8), // Add some space between icon and text
-                        Text('Copy link', style: TextStyle(color: Colors.white)), // Set text color
+                        SizedBox(
+                            width: 8), // Add some space between icon and text
+                        Text('Copy link',
+                            style: TextStyle(
+                                color: Colors.white)), // Set text color
                       ],
                     ),
                   ),
                 ),
                 // Additional button 1 (Bottom border radius) with margin-bottom
                 Container(
-                  margin: EdgeInsets.only(bottom: 3),  // Add margin-bottom for the third button
+                  margin: EdgeInsets.only(
+                      bottom: 3), // Add margin-bottom for the third button
                   child: ElevatedButton.icon(
                     onPressed: () {
                       // Add your action here
@@ -115,19 +128,24 @@ class AnotherPage extends StatelessWidget {
                         borderRadius: BorderRadius.zero, // No border radius
                       ),
                     ),
-                    icon: Icon(Icons.send, color: Colors.white), // Set icon color
+                    icon:
+                        Icon(Icons.send, color: Colors.white), // Set icon color
                     label: Row(
                       mainAxisAlignment: MainAxisAlignment.start, // Align left
                       children: [
-                        SizedBox(width: 8), // Add some space between icon and text
-                        Text('Send card another way', style: TextStyle(color: Colors.white)), // Set text color
+                        SizedBox(
+                            width: 8), // Add some space between icon and text
+                        Text('Send card another way',
+                            style: TextStyle(
+                                color: Colors.white)), // Set text color
                       ],
                     ),
                   ),
                 ),
                 // Additional button 2 (No border radius) with margin-bottom
                 Container(
-                  margin: EdgeInsets.only(bottom: 3),  // Add margin-bottom for the fourth button
+                  margin: EdgeInsets.only(
+                      bottom: 3), // Add margin-bottom for the fourth button
                   child: ElevatedButton.icon(
                     onPressed: () {
                       // Add your action here
@@ -138,19 +156,24 @@ class AnotherPage extends StatelessWidget {
                         borderRadius: BorderRadius.zero, // No border radius
                       ),
                     ),
-                    icon: Icon(Icons.qr_code, color: Colors.white), // Set icon color
+                    icon: Icon(Icons.qr_code,
+                        color: Colors.white), // Set icon color
                     label: Row(
                       mainAxisAlignment: MainAxisAlignment.start, // Align left
                       children: [
-                        SizedBox(width: 8), // Add some space between icon and text
-                        Text('Save QR code to photos', style: TextStyle(color: Colors.white)), // Set text color
+                        SizedBox(
+                            width: 8), // Add some space between icon and text
+                        Text('Save QR code to photos',
+                            style: TextStyle(
+                                color: Colors.white)), // Set text color
                       ],
                     ),
                   ),
                 ),
                 // Additional button 3 (No border radius) with margin-bottom
                 Container(
-                  margin: EdgeInsets.only(bottom: 3),  // Add margin-bottom for the fifth button
+                  margin: EdgeInsets.only(
+                      bottom: 3), // Add margin-bottom for the fifth button
                   child: ElevatedButton.icon(
                     onPressed: () {
                       // Add your action here
@@ -161,19 +184,24 @@ class AnotherPage extends StatelessWidget {
                         borderRadius: BorderRadius.zero, // No border radius
                       ),
                     ),
-                    icon: Icon(Icons.copy, color: Colors.white), // Set icon color
+                    icon:
+                        Icon(Icons.copy, color: Colors.white), // Set icon color
                     label: Row(
                       mainAxisAlignment: MainAxisAlignment.start, // Align left
                       children: [
-                        SizedBox(width: 8), // Add some space between icon and text
-                        Text('Copy link with margin', style: TextStyle(color: Colors.white)), // Set text color
+                        SizedBox(
+                            width: 8), // Add some space between icon and text
+                        Text('Copy link with margin',
+                            style: TextStyle(
+                                color: Colors.white)), // Set text color
                       ],
                     ),
                   ),
                 ),
                 // Additional button 4 (No border radius) with margin-bottom
                 Container(
-                  margin: EdgeInsets.only(bottom: 3),  // Add margin-bottom for the sixth button
+                  margin: EdgeInsets.only(
+                      bottom: 3), // Add margin-bottom for the sixth button
                   child: ElevatedButton.icon(
                     onPressed: () {
                       // Add your action here
@@ -187,18 +215,22 @@ class AnotherPage extends StatelessWidget {
                         ), // Set button border radius
                       ),
                     ),
-                    icon: Icon(Icons.wallet, color: Colors.white), // Set icon color
+                    icon: Icon(Icons.wallet,
+                        color: Colors.white), // Set icon color
                     label: Row(
                       mainAxisAlignment: MainAxisAlignment.start, // Align left
                       children: [
-                        SizedBox(width: 8), // Add some space between icon and text
-                        Text('Add card to wallet', style: TextStyle(color: Colors.white)), // Set text color
+                        SizedBox(
+                            width: 8), // Add some space between icon and text
+                        Text('Add card to wallet',
+                            style: TextStyle(
+                                color: Colors.white)), // Set text color
                       ],
                     ),
                   ),
                 ),
                 // Add more buttons as needed
-                // add more 
+                // add more
               ],
             ),
           ),
