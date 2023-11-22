@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'dart:convert';
+import 'dart:typed_data';
 
 class ProfileInfo extends StatelessWidget {
   final Map<String, dynamic> profile;
@@ -14,6 +16,7 @@ class ProfileInfo extends StatelessWidget {
     String suffix = profile['profileInfo']['suffix'];
     String jobTitle = profile['profileInfo']['job_title'];
     String logo = profile['display']['Logo'];
+    bool isBase64 = logo?.startsWith('data:image') ?? false;
     return Container(
       margin: EdgeInsets.only(top: 20.0),
       child: Column(
@@ -23,10 +26,19 @@ class ProfileInfo extends StatelessWidget {
             margin: EdgeInsets.symmetric(horizontal: 50.0),
             height: 80.0,
             width: double.infinity,
-            child: Image.network(
-              "$logo", // Replace with your image URL or use AssetImage for local assets
-              fit: BoxFit.cover,
-            ),
+            child: isBase64
+                ? Image.memory(
+                    // Display base64 image
+                    _decodeBase64Image(logo!),
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  )
+                : Image.network(
+                    // Display image from HTTP URL
+                    logo!,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
           ),
           SizedBox(height: 10.0),
           Container(
@@ -68,4 +80,11 @@ class ProfileInfo extends StatelessWidget {
       ),
     );
   }
+}
+
+// Function to decode base64 string to Uint8List
+Uint8List _decodeBase64Image(String base64String) {
+  Uint8List decodedBytes = base64Decode(
+      base64String.replaceFirst(RegExp(r'data:image/[^;]+;base64,'), ''));
+  return decodedBytes;
 }

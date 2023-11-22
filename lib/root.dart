@@ -1,68 +1,10 @@
-// import 'dart:convert';
-// import 'package:flutter/material.dart';
-// import 'package:http/http.dart' as http;
-// import 'package:my_app/feildInfo.dart';
-// import 'profile.dart';
-// import 'profileInfo.dart';
-
-// class MyComponent extends StatefulWidget {
-//   @override
-//   _MyComponentState createState() => _MyComponentState();
-// }
-
-// class _MyComponentState extends State<MyComponent> {
-//   List<Map<String, dynamic>> profiles = [];
-
-//   @override
-//   void initState() {
-//     super.initState();
-//     fetchData();
-//   }
-
-//   Future<void> fetchData() async {
-//     final response = await http.get(Uri.parse(
-//         'https://business-card-backend-2.vercel.app/cards/cards/jack@gmail.com'));
-
-//     if (response.statusCode == 200) {
-//       setState(() {
-//         profiles = List<Map<String, dynamic>>.from(json.decode(response.body));
-//       });
-//     } else {
-//       throw Exception('Failed to load data');
-//     }
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return SingleChildScrollView(
-//       child: Column(
-//         crossAxisAlignment: CrossAxisAlignment.start,
-//         children: profiles.map((profile) {
-//           return Column(
-//             crossAxisAlignment: CrossAxisAlignment.start,
-//             children: [
-//               ProfileComponent(profile: profile),
-//               ProfileInfo(profile: profile),
-//               FieldInfo(profile: profile),
-//               // You can add other components/widgets that require profile data
-//               // Text(profile['email'] ?? 'No email available'),
-//               SizedBox(height: 20), // Spacer between profiles
-//             ],
-//           );
-//         }).toList(),
-//       ),
-//     );
-//   }
-// }
-
-// 00000000000000000000000000000000000000000
-
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:my_app/feildInfo.dart';
 import 'profile.dart';
 import 'profileInfo.dart';
+import 'NavBar.dart';
 
 class MyComponent extends StatefulWidget {
   @override
@@ -82,7 +24,7 @@ class _MyComponentState extends State<MyComponent> {
 
   Future<void> fetchData() async {
     final response = await http.get(Uri.parse(
-        'https://business-card-backend-2.vercel.app/cards/cards/maniksarker265@gmail.com'));
+        'https://business-card-backend-2.vercel.app/cards/cards/jack@gmail.com'));
 
     if (response.statusCode == 200) {
       setState(() {
@@ -96,6 +38,8 @@ class _MyComponentState extends State<MyComponent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavBar(),
+      appBar: AppBar(),
       body: profiles.isEmpty
           ? Center(
               child: CircularProgressIndicator(),
