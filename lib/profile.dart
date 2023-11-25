@@ -32,7 +32,7 @@ class ProfileComponent extends StatelessWidget {
     if (displayType == "pro") {
       return Container(
         child: Padding(
-          padding: EdgeInsets.zero, // Set padding to zero
+          padding: EdgeInsets.zero,
           child: Stack(
             children: [
               GestureDetector(
@@ -42,50 +42,82 @@ class ProfileComponent extends StatelessWidget {
                 },
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
-                    topLeft:
-                        Radius.circular(8.0), // Adjust border radius as needed
+                    topLeft: Radius.circular(8.0),
                     topRight: Radius.circular(8.0),
                   ),
                   child: Container(
-                    height: 600.0,
-                    decoration: BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(
-                          color: Colors.orange, // Set border color to orange
-                          width: 40.0, // Set border width
-                        ),
-                      ),
-                    ),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         isBase64
                             ? Image.memory(
-                                // Display base64 image
                                 _decodeBase64Image(image!),
                                 width: double.infinity,
                                 fit: BoxFit.cover,
                               )
                             : Image.network(
-                                // Display image from HTTP URL
                                 image!,
                                 width: double.infinity,
                                 fit: BoxFit.cover,
                               ),
-                        SizedBox(
-                            height:
-                                10), // Add spacing between image and contact info
-                        contactInfo,
-                        SizedBox(
-                            height: 10), // Add additional spacing if needed
-                        // Add additional content or widgets specific to the "pro" case here
-                        Text(
-                          'Pro Information:',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
+                        SizedBox(height: 0),
+                        Container(
+                          color: Colors.blue,
+                          padding: EdgeInsets.symmetric(vertical: 20),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 20),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Mr. Tom Latham Phd',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 30,
+                                          fontWeight: FontWeight.w600),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    Text(
+                                      '(MERN)',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 20),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    SizedBox(height: 10),
+                                    Padding(
+                                      padding: EdgeInsets.only(top: 0),
+                                      child: Text(
+                                        'Front-End Developer',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 25,
+                                            fontWeight: FontWeight.w500),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                    Text(
+                                      "Web Development",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontStyle: FontStyle.italic,
+                                          fontSize: 20),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    Text(
+                                      "Depth Search",
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 20),
+                                      textAlign: TextAlign.center,
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                        // Add more widgets as needed for the "pro" case
                       ],
                     ),
                   ),

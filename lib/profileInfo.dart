@@ -7,8 +7,16 @@ class ProfileInfo extends StatelessWidget {
 
   // Receive the data as a parameter in the constructor
   const ProfileInfo({Key? key, required this.profile}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    String displayType = profile['display']['design'];
+    bool isFlatDesign = displayType == 'flat';
+
+    if (!isFlatDesign) {
+      return Container(); // Return an empty container if displayType is not 'flat'
+    }
+
     String prefix = profile['profileInfo']['prefix'];
     String firstname = profile['profileInfo']['first_name'];
     String lastName = profile['profileInfo']['last_name'];
@@ -17,8 +25,7 @@ class ProfileInfo extends StatelessWidget {
     String jobTitle = profile['profileInfo']['job_title'];
     String logo = profile['display']['Logo'];
     bool isBase64 = logo?.startsWith('data:image') ?? false;
-    String displayType = profile['display']['design'];
-    // print(displayType);
+
     return Container(
       margin: EdgeInsets.only(top: 20.0),
       child: Column(
@@ -82,11 +89,11 @@ class ProfileInfo extends StatelessWidget {
       ),
     );
   }
-}
 
-// Function to decode base64 string to Uint8List
-Uint8List _decodeBase64Image(String base64String) {
-  Uint8List decodedBytes = base64Decode(
-      base64String.replaceFirst(RegExp(r'data:image/[^;]+;base64,'), ''));
-  return decodedBytes;
+  // Function to decode base64 string to Uint8List
+  Uint8List _decodeBase64Image(String base64String) {
+    Uint8List decodedBytes = base64Decode(
+        base64String.replaceFirst(RegExp(r'data:image/[^;]+;base64,'), ''));
+    return decodedBytes;
+  }
 }
