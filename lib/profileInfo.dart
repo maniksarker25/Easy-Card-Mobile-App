@@ -17,6 +17,8 @@ class ProfileInfo extends StatelessWidget {
     String jobTitle = profile['profileInfo']['job_title'];
     String logo = profile['display']['Logo'];
     bool isBase64 = logo?.startsWith('data:image') ?? false;
+    String displayType = profile['display']['design'];
+    // print(displayType);
     return Container(
       margin: EdgeInsets.only(top: 20.0),
       child: Column(
