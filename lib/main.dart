@@ -92,7 +92,22 @@ class _MyHomePageState extends State<MyHomePage> {
       // ),
       // body: MyComponent(),
       body: LoginPage(),
-      // This trailing comma makes auto-formatting nicer for build methods.
+      floatingActionButton: ElevatedButton.icon(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => AnotherPage()),
+          );
+        },
+        icon: Icon(Icons.send, color: Colors.white),
+        label: Text(
+          "Send",
+          style: TextStyle(color: Colors.white, fontSize: 20),
+        ),
+        style: ElevatedButton.styleFrom(
+          primary: Colors.black,
+        ),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

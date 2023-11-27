@@ -10,8 +10,18 @@ class ProfileComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String image = profile['display']['ProfileImage'];
+    String prefix = profile['profileInfo']['prefix'];
+    String firstName = profile['profileInfo']['first_name'];
+    String lastName = profile['profileInfo']['last_name'];
+    String preferredName = profile['profileInfo']['preferred_name'];
+    String department = profile['profileInfo']['department'];
+    String company = profile['profileInfo']['company'];
+    String suffix = profile['profileInfo']['suffix'];
+    String jobTitle = profile['profileInfo']['job_title'];
     // print('Image value: $image');
-    bool isBase64 = image?.startsWith('data:image') ?? false;
+    bool isBase64Image = image?.startsWith('data:image') ?? false;
+    String logo = profile['display']['Logo'];
+    bool isBase64Logo = logo?.startsWith('data:image') ?? false;
     String displayType = profile['display']['design'];
     Widget contactInfo = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,7 +59,7 @@ class ProfileComponent extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        isBase64
+                        isBase64Image
                             ? Image.memory(
                                 _decodeBase64Image(image!),
                                 width: double.infinity,
@@ -73,24 +83,41 @@ class ProfileComponent extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(
-                                      'Mr. Tom Latham Phd',
+                                      '$prefix. $firstName $lastName',
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 30,
                                           fontWeight: FontWeight.w600),
                                       textAlign: TextAlign.center,
                                     ),
-                                    Text(
-                                      '(MERN)',
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 20),
+                                    RichText(
                                       textAlign: TextAlign.center,
+                                      text: TextSpan(
+                                        children: [
+                                          TextSpan(
+                                            text: '$suffix ',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          TextSpan(
+                                            text: '($preferredName)',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                     SizedBox(height: 10),
                                     Padding(
                                       padding: EdgeInsets.only(top: 0),
                                       child: Text(
-                                        'Front-End Developer',
+                                        '$jobTitle',
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontSize: 25,
@@ -99,7 +126,7 @@ class ProfileComponent extends StatelessWidget {
                                       ),
                                     ),
                                     Text(
-                                      "Web Development",
+                                      "$department",
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontStyle: FontStyle.italic,
@@ -107,7 +134,7 @@ class ProfileComponent extends StatelessWidget {
                                       textAlign: TextAlign.center,
                                     ),
                                     Text(
-                                      "Depth Search",
+                                      "$company",
                                       style: TextStyle(
                                           color: Colors.white, fontSize: 20),
                                       textAlign: TextAlign.center,
@@ -154,17 +181,19 @@ class ProfileComponent extends StatelessWidget {
                         ),
                       ),
                     ),
-                    child: isBase64
+                    child: isBase64Image
                         ? Image.memory(
                             // Display base64 image
                             _decodeBase64Image(image!),
                             width: double.infinity,
+                            height: 100,
                             fit: BoxFit.cover,
                           )
                         : Image.network(
                             // Display image from HTTP URL
                             image!,
                             width: double.infinity,
+                            height: 100,
                             fit: BoxFit.cover,
                           ),
                   ),
