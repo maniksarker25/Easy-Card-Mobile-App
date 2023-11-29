@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/root.dart';
+import 'services/auth_services.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -180,6 +181,9 @@ class _LoginPageState extends State<LoginPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           GestureDetector(
+                            onTap: () {
+                              AuthService().signInWithGoogle();
+                            },
                             // onTap: () async {
                             //   // Add your Google button tap logic here
                             //   // This function will be executed when the Google image is tapped.
