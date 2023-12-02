@@ -5,6 +5,7 @@ import 'package:my_app/feildInfo.dart';
 import 'profile.dart';
 import 'profileInfo.dart';
 import 'NavBar.dart';
+import 'anotherPage.dart';
 
 class MyComponent extends StatefulWidget {
   @override
@@ -84,35 +85,26 @@ class _MyComponentState extends State<MyComponent> {
               ),
             ),
           ),
+
+          // Positioned button at bottom right
+          Positioned(
+            bottom: 5,
+            right: 5,
+            child: FloatingActionButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AnotherPage()),
+                );
+              },
+              backgroundColor: Colors.black,
+              child: Icon(Icons.send, color: Colors.white),
+            ),
+          ),
         ],
       ),
       drawer: NavBar(),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          if (_currentPage > 0)
-            FloatingActionButton(
-              onPressed: () {
-                _pageController.previousPage(
-                  duration: Duration(milliseconds: 300),
-                  curve: Curves.easeInOut,
-                );
-              },
-              child: Icon(Icons.arrow_back),
-            ),
-          SizedBox(width: 10),
-          if (_currentPage < profiles.length - 1)
-            FloatingActionButton(
-              onPressed: () {
-                _pageController.nextPage(
-                  duration: Duration(milliseconds: 300),
-                  curve: Curves.easeInOut,
-                );
-              },
-              child: Icon(Icons.arrow_forward),
-            ),
-        ],
-      ),
+      // Removed previous floatingActionButton here
     );
   }
 }
