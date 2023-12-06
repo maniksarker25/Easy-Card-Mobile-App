@@ -140,6 +140,7 @@
 // newly try this thing ------------
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class FieldInfo extends StatelessWidget {
   final Map<String, dynamic> profile;
@@ -171,26 +172,60 @@ class FieldInfo extends StatelessWidget {
             else if (field['type'] == 'Email')
               TwoDataRow(Icons.email, field['url'], field["label"])
             else if (field['type'] == 'Address')
-              TwoDataRow(Icons.email, field['address'], field["label"])
+              TwoDataRow(
+                  FontAwesomeIcons.mapMarker, field['address'], field["label"])
             else if (field['type'] == 'Link')
-              TwoDataRow(Icons.email, field['url'], field["label"])
-            else if (field['type'] == 'Whatsapp' ||
-                field['type'] == 'Viber' ||
-                field['type'] == 'Skype' ||
-                field['type'] == 'Snapchat' ||
-                field['type'] == 'Signal' ||
-                field['type'] == 'Telegram' ||
-                field['type'] == 'Discord' ||
-                field['type'] == 'Slack')
-              TwoDataRow(Icons.email, field['number'], field["label"])
-            else if (field['type'] == 'Facebook' ||
-                field['type'] == 'Instagram' ||
-                field['type'] == 'LinkedIn')
+              TwoDataRow(Icons.link, field['url'], field["label"])
+            else if (field['type'] == 'Whatsapp')
+              TwoDataRow(
+                  FontAwesomeIcons.whatsapp, field['number'], field["label"])
+            else if (field['type'] == 'Viber')
+              TwoDataRow(
+                  FontAwesomeIcons.viber, field['number'], field["label"])
+            else if (field['type'] == 'Skype')
+              TwoDataRow(
+                  FontAwesomeIcons.snapchat, field['number'], field["label"])
+            else if (field['type'] == 'Snapchat')
+              TwoDataRow(
+                  FontAwesomeIcons.snapchat, field['number'], field["label"])
+            else if (field['type'] == 'Signal')
+              TwoDataRow(
+                  FontAwesomeIcons.signal, field['number'], field["label"])
+            else if (field['type'] == 'Telegram')
+              TwoDataRow(
+                  FontAwesomeIcons.telegram, field['number'], field["label"])
+            else if (field['type'] == 'Discord')
+              TwoDataRow(
+                  FontAwesomeIcons.discord, field['number'], field["label"])
+            else if (field['type'] == 'Slack')
+              TwoDataRow(
+                  FontAwesomeIcons.slack, field['number'], field["label"])
+            else if (field['type'] == 'Facebook')
               SocialMediaRow([
-                if (field['type'] == 'Facebook') Icons.facebook,
-                if (field['type'] == 'Instagram') Icons.call,
-                if (field['type'] == 'LinkedIn') Icons.man,
-              ]),
+                if (field['type'] == 'Facebook') FontAwesomeIcons.facebook,
+              ])
+            else if (field['type'] == 'Instagram')
+              SocialMediaRow([
+                if (field['type'] == 'Instagram') FontAwesomeIcons.instagram,
+              ])
+            else if (field['type'] == 'Twitter')
+              SocialMediaRow([
+                if (field['type'] == 'Twitter') FontAwesomeIcons.twitter,
+              ])
+            else if (field['type'] == 'LinkedIn')
+              SocialMediaRow([
+                if (field['type'] == 'LinkedIn') FontAwesomeIcons.linkedin,
+              ])
+            else if (field['type'] == 'Pinterest')
+              SocialMediaRow([
+                if (field['type'] == 'Pinterest') FontAwesomeIcons.pinterest,
+              ])
+            else if (field['type'] == 'Tiktok')
+              SocialMediaRow([
+                if (field['type'] == 'Tiktok') FontAwesomeIcons.tiktok,
+              ])
+            else if (field['type'] == 'Image')
+              ImageRow(field['image']),
           // Add more widgets to the column if necessary
         ],
       ),
@@ -228,7 +263,7 @@ class FieldInfo extends StatelessWidget {
         Icon(iconData, size: 35, color: Color(0xFF0084FF)),
         Padding(
           padding: EdgeInsets.only(left: 20),
-          child: Text(text, style: TextStyle(fontSize: 20)),
+          child: Text(text, style: TextStyle(fontSize: 22)),
         ),
       ],
     );
@@ -245,12 +280,12 @@ class FieldInfo extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(text, style: TextStyle(fontSize: 20)),
+                Text(text, style: TextStyle(fontSize: 22)),
                 SizedBox(height: 5), // Adding some space between texts
                 Text(
                   subText,
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 18,
                   ),
                 ),
               ],
@@ -266,11 +301,30 @@ class FieldInfo extends StatelessWidget {
       children: iconDataList.map((iconData) {
         print(iconData);
         return Padding(
-          padding:
-              EdgeInsets.only(right: 20), // Adjust the right padding as needed
+          padding: EdgeInsets.only(
+              right: 20, top: 8), // Adjust the right padding as needed
           child: Icon(iconData, size: 40, color: Color(0xFF0084FF)),
         );
       }).toList(),
     );
   }
 }
+
+// Updated ImageRow widget function
+Widget ImageRow(String imageUrl) {
+  return Container(
+    margin: EdgeInsets.symmetric(horizontal: 4, vertical: 20),
+    width: double.infinity, // Full width
+    height: 200, // Fixed height of 200 pixels
+    child: ClipRRect(
+      // borderRadius: BorderRadius.circular(8.0), // Optional: Add border radius
+      child: Image.network(
+        imageUrl,
+        fit: BoxFit.cover, // Adjust the image fit as needed
+      ),
+    ),
+  );
+}
+
+//---------------------
+

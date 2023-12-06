@@ -6,6 +6,7 @@ import 'profile.dart';
 import 'profileInfo.dart';
 import 'NavBar.dart';
 import 'anotherPage.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MyComponent extends StatefulWidget {
   @override
@@ -90,15 +91,40 @@ class _MyComponentState extends State<MyComponent> {
           Positioned(
             bottom: 5,
             right: 5,
-            child: FloatingActionButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => AnotherPage()),
-                );
-              },
-              backgroundColor: Colors.black,
-              child: Icon(Icons.send, color: Colors.white),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius:
+                    BorderRadius.circular(12), // Adjust the radius as needed
+                color: Colors.black,
+              ),
+              padding: EdgeInsets.symmetric(
+                  horizontal: 10, vertical: 5), // Adjust padding as needed
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AnotherPage()),
+                  );
+                },
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    FaIcon(
+                      FontAwesomeIcons
+                          .paperPlane, // Replace with the Font Awesome icon you want
+                      color: Colors.white,
+                      size: 10, // Adjust the size as needed
+                    ), // Replace with your icon
+                    SizedBox(width: 3), // Adjust the gap as needed
+                    Text(
+                      "Send",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
         ],
