@@ -1,144 +1,3 @@
-// import 'package:flutter/material.dart';
-
-// class FieldInfo extends StatelessWidget {
-//   final Map<String, dynamic> profile;
-
-//   const FieldInfo({Key? key, required this.profile}) : super(key: key);
-
-//   // Function to map field types to corresponding icons
-//   IconData getIconForFieldType(String type) {
-//     switch (type) {
-//       case 'Phone':
-//         return Icons.phone;
-//       case 'Website':
-//         return Icons.web;
-//       case 'Email':
-//         return Icons.email;
-//       case 'Address':
-//         return Icons.location_on;
-//       case "Link":
-//         return Icons.link;
-//       case "Whatsapp":
-//         return Icons.whatshot_outlined;
-//       case "Viber":
-//         return Icons.call;
-//       default:
-//         return Icons.error; // Default icon for unknown types
-//     }
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     List<Map<String, dynamic>> fields =
-//         List<Map<String, dynamic>>.from(profile['fields']);
-
-//     print(fields);
-
-//     return Container(
-//       padding: EdgeInsets.all(10.0),
-//       margin: EdgeInsets.all(10.0),
-//       child: Column(
-//         crossAxisAlignment: CrossAxisAlignment.start,
-//         children: fields.map((field) {
-//           String type = field['type'];
-//           String value = '';
-//           String subValue = "";
-//           String socialValue = "";
-
-//           // Determine the value based on the type
-//           if (type == 'Phone') {
-//             value = field['number'];
-//           } else if (type == 'Website') {
-//             value = field['label'];
-//           } else if (type == 'Email') {
-//             value = field['url'];
-//             subValue = field['label'];
-//           } else if (type == 'Address') {
-//             value = field['address'];
-//           } else if (type == 'Link') {
-//             value = field['displayUrl'];
-//             subValue = field["label"];
-//           } else if (type == 'WhatsApp') {
-//             value = field['number'];
-//             subValue = field["label"];
-//           } else if (type == 'Viber') {
-//             value = field['number'];
-//             subValue = field["label"];
-//           } else if (type == 'Skype') {
-//             value = field['number'];
-//             subValue = field["label"];
-//           } else if (type == 'Snapchat') {
-//             value = field['number'];
-//             subValue = field["label"];
-//           } else if (type == 'Signal') {
-//             value = field['number'];
-//             subValue = field["label"];
-//           } else if (type == 'Telegram') {
-//             value = field['number'];
-//             subValue = field["label"];
-//           } else if (type == 'Discord') {
-//             value = field['number'];
-//             subValue = field["label"];
-//           } else if (type == 'Slack') {
-//             value = field['number'];
-//             subValue = field["label"];
-//           } else if (type == 'Facebook') {
-//             socialValue = field['url'];
-//           } else if (type == 'Instagram') {
-//             socialValue = field['url'];
-//           }
-
-//           IconData iconData = getIconForFieldType(type);
-
-//           return Container(
-//               margin: EdgeInsets.only(top: 15), // Margin top of 5px
-//               child: Row(
-//                 children: [
-//                   Icon(
-//                     iconData,
-//                     size: 30,
-//                     color: Color(0xFF0084FF),
-//                   ), // Display the icon
-//                   SizedBox(width: 10), // Add space between icon and text
-//                   Expanded(
-//                     child: Column(
-//                       crossAxisAlignment: CrossAxisAlignment.start,
-//                       children: [
-//                         Visibility(
-//                           visible: value
-//                               .isNotEmpty, // Show only if subValue is not empty
-//                           child: Text(
-//                             '$value',
-//                             style: TextStyle(
-//                               fontSize: 16,
-//                               fontWeight: FontWeight.w300,
-//                             ),
-//                           ),
-//                         ),
-//                         Visibility(
-//                           visible: subValue
-//                               .isNotEmpty, // Show only if subValue is not empty
-//                           child: Text(
-//                             '$subValue',
-//                             style: TextStyle(
-//                               fontSize: 16,
-//                               fontWeight: FontWeight.w300,
-//                             ),
-//                           ),
-//                         ),
-//                       ],
-//                     ),
-//                   ),
-//                 ],
-//               ));
-//         }).toList(),
-//       ),
-//     );
-//   }
-// }
-
-// newly try this thing ------------
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -225,7 +84,9 @@ class FieldInfo extends StatelessWidget {
                 if (field['type'] == 'Tiktok') FontAwesomeIcons.tiktok,
               ])
             else if (field['type'] == 'Image')
-              ImageRow(field['image']),
+              ImageRow(field['image'])
+            else if (field['type'] == 'Galary')
+              GalleryRow(field['image']),
           // Add more widgets to the column if necessary
         ],
       ),
@@ -327,4 +188,27 @@ Widget ImageRow(String imageUrl) {
 }
 
 //---------------------
-
+Widget GalleryRow(dynamic imageUrls) {
+  List<String> imageUrlList = List<String>.from(imageUrls ?? []);
+  print(imageUrlList);
+  return Container(
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        GridView.builder(
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 1,
+          ),
+          itemCount: imageUrls.length,
+          itemBuilder: (context, index) {
+            return ImageRow(imageUrls[index]);
+          },
+        ),
+      ],
+    ),
+  );
+}
