@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "641301914906",
+    "project_id": "easy-cards-pro",
+    "storage_bucket": "easy-cards-pro.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:641301914906:android:2ef39498a47f9e02a6b8a3",
+        "android_client_info": {
+          "package_name": "com.example.my_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "641301914906-fc2ko99ps5161o4soc257r0uluqssjhj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.my_app",
+            "certificate_hash": "328edbd2d9a0ec09544ee63038b30a674829e04c"
+          }
+        },
+        {
+          "client_id": "641301914906-c6oljbfba5el0gs8gun3b3inlfsif4lm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBieddlDULgkDDq9Zmj71jw6lbh8SIZwkE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "641301914906-c6oljbfba5el0gs8gun3b3inlfsif4lm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "641301914906-qspv1g45lu3m3humlk1d611f0uajdu6h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.easycard"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/root.dart';
+import 'services/auth_services.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -121,11 +122,11 @@ class _LoginPageState extends State<LoginPage> {
                         // },
                         onPressed: () {
                           // Navigate to the NewComponent page when the login button is pressed
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => MyComponent()),
-                          );
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //       builder: (context) => MyComponent()),
+                          // );
                         },
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
@@ -180,6 +181,27 @@ class _LoginPageState extends State<LoginPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           GestureDetector(
+                            onTap: () {
+                              AuthService().signInWithGoogle((userCredential) {
+                                if (userCredential != null) {
+                                  String userEmail =
+                                      userCredential.user?.email ??
+                                          'Email not available';
+                                  print('User Email: $userEmail');
+
+                                  // Navigate to MyComponent after getting the email
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => MyComponent(userEmail: userEmail), // Pass email to MyComponent
+                                    ),
+                                  );
+                                } else {
+                                  print('Failed to sign in.');
+                                  // Handle sign-in failure if needed
+                                }
+                              });
+                            },
                             // onTap: () async {
                             //   // Add your Google button tap logic here
                             //   // This function will be executed when the Google image is tapped.

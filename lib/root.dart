@@ -9,6 +9,9 @@ import 'anotherPage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MyComponent extends StatefulWidget {
+  final String userEmail;
+  MyComponent({required this.userEmail});
+
   @override
   _MyComponentState createState() => _MyComponentState();
 }
@@ -22,12 +25,12 @@ class _MyComponentState extends State<MyComponent> {
   @override
   void initState() {
     super.initState();
-    fetchData();
+    fetchData(widget.userEmail);
   }
 
-  Future<void> fetchData() async {
+  Future<void> fetchData(String email) async {
     final response = await http.get(Uri.parse(
-        'https://business-card-backend-2.vercel.app/cards/cards/tom@gmail.com'));
+        'https://business-card-backend-2.vercel.app/cards/cards/$email'));
 
     if (response.statusCode == 200) {
       setState(() {
