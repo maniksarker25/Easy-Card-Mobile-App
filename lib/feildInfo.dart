@@ -28,6 +28,8 @@ class FieldInfo extends StatelessWidget {
               )
             else if (field['type'] == 'Website')
               WebsiteRow(Icons.web_rounded, field['label'])
+            else if (field['type'] == 'Header')
+              HeaderRow(field['title'])
             else if (field['type'] == 'Email')
               TwoDataRow(Icons.email, field['url'], field["label"])
             else if (field['type'] == 'Address')
@@ -207,6 +209,29 @@ Widget GalleryRow(dynamic imageUrls) {
           itemBuilder: (context, index) {
             return ImageRow(imageUrls[index]);
           },
+        ),
+      ],
+    ),
+  );
+}
+
+// component for header ---------
+Widget HeaderRow(String title) {
+  return Container(
+    margin: EdgeInsets.symmetric(vertical: 10),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.only(left: 10), // Adding left padding
+          child: Text(
+            title,
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+          ),
         ),
       ],
     ),
