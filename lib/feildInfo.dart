@@ -219,11 +219,11 @@ Widget GalleryRow(dynamic imageUrls) {
 Widget HeaderRow(String title) {
   return Container(
     margin: EdgeInsets.symmetric(vertical: 10),
-    child: Column(
+    child: Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsets.only(left: 10), // Adding left padding
+          padding: EdgeInsets.only(left: 8), // Adding left padding
           child: Text(
             title,
             style: TextStyle(
