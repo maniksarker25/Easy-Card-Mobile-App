@@ -122,11 +122,12 @@ class _LoginPageState extends State<LoginPage> {
                         // },
                         onPressed: () {
                           // Navigate to the NewComponent page when the login button is pressed
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //       builder: (context) => MyComponent()),
-                          // );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MyComponent(
+                                    userEmail: "safi29317@gmail.com")),
+                          );
                         },
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
@@ -193,7 +194,9 @@ class _LoginPageState extends State<LoginPage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => MyComponent(userEmail: userEmail), // Pass email to MyComponent
+                                      builder: (context) => MyComponent(
+                                          userEmail:
+                                              userEmail), // Pass email to MyComponent
                                     ),
                                   );
                                 } else {
