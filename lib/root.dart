@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -21,7 +22,6 @@ class _MyComponentState extends State<MyComponent> {
   List<Map<String, dynamic>> profiles = [];
   PageController _pageController = PageController(initialPage: 0);
   int _currentPage = 0;
-
   @override
   void initState() {
     super.initState();

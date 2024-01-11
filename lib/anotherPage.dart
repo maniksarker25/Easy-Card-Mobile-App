@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:qr_flutter/qr_flutter.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:clipboard/clipboard.dart';
 
 class AnotherPage extends StatelessWidget {
   final Map<String, dynamic> profile;
@@ -11,7 +12,7 @@ class AnotherPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Send Your Card $profile._id",
+          "Send Your Card $profile",
           style: TextStyle(color: Colors.white), // Set app bar title text color
         ),
         backgroundColor: Colors.black, // Set app bar background color
@@ -34,7 +35,8 @@ class AnotherPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   QrImageView(
-                    data: '1234567890',
+                    data:
+                        'https://easycards.pro/${profile['setting']?['url'] ?? ''}',
                     version: QrVersions.auto,
                     size: 200.0,
                   ),
@@ -98,30 +100,43 @@ class AnotherPage extends StatelessWidget {
                 // Example button 2 (Top border radius) with margin-bottom
                 Container(
                   margin: EdgeInsets.only(
-                      bottom: 3), // Add margin-bottom for the second button
+                    bottom: 3,
+                  ),
                   child: ElevatedButton.icon(
                     onPressed: () {
-                      // Add your action here
+                      String link =
+                          'https://tamastoria.pro/${profile['setting']?['url'] ?? ''}';
+
+                      // Copy link to clipboard
+                      FlutterClipboard.copy(link);
+
+                      // Show a toast message
+                      Fluttertoast.showToast(
+                        msg: 'Link copied to clipboard!',
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.BOTTOM,
+                        backgroundColor: Colors.grey,
+                        textColor: Colors.white,
+                      );
+
+                      // Add your additional action here if needed
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.grey, // Set button background color
+                      primary: Colors.grey,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(
                           topRight: Radius.circular(8.0),
                           topLeft: Radius.circular(8.0),
-                        ), // Set button border radius
+                        ),
                       ),
                     ),
-                    icon:
-                        Icon(Icons.copy, color: Colors.white), // Set icon color
+                    icon: Icon(Icons.copy, color: Colors.white),
                     label: Row(
-                      mainAxisAlignment: MainAxisAlignment.start, // Align left
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        SizedBox(
-                            width: 8), // Add some space between icon and text
+                        SizedBox(width: 8),
                         Text('Copy link',
-                            style: TextStyle(
-                                color: Colors.white)), // Set text color
+                            style: TextStyle(color: Colors.white)),
                       ],
                     ),
                   ),
