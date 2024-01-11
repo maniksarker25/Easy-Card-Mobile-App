@@ -39,7 +39,7 @@ class NavBar extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'john.doe@example.com', // Replace with user's email
+                  'manik@example.com', // Replace with user's email
                 ),
               ],
             ),
