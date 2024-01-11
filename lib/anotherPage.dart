@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:qr_flutter/qr_flutter.dart';
+
 class AnotherPage extends StatelessWidget {
   final Map<String, dynamic> profile;
 
@@ -25,16 +27,23 @@ class AnotherPage extends StatelessWidget {
           // Add a ClipRRect to create rounded corners for the image
           Container(
             margin: EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+            color: Colors.white, // Set the background color to white
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20.0),
-              child: Image.network(
-                'https://i.ibb.co/sP5z7xR/mywiki.png',
-                width: double.infinity,
-                height: 300.0,
-                fit: BoxFit.cover,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  QrImageView(
+                    data: '1234567890',
+                    version: QrVersions.auto,
+                    size: 200.0,
+                  ),
+                  // Your widget content goes here
+                ],
               ),
             ),
           ),
+
           SizedBox(height: 10),
           // Add the additional text centered horizontally
           Center(
@@ -242,3 +251,38 @@ class AnotherPage extends StatelessWidget {
     );
   }
 }
+
+// another way ------------------
+
+// import 'package:flutter/material.dart';
+// import 'package:qr_flutter/qr_flutter.dart';
+
+// class AnotherPage extends StatelessWidget {
+//   final Map<String, dynamic> profile;
+
+//   AnotherPage({required this.profile});
+//   @override
+//   Widget build(BuildContext context) {
+//     // Your widget logic goes here
+
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('Another Page'),
+//       ),
+//       body: Center(
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: <Widget>[
+//             QrImageView(
+//               data: '1234567890',
+//               version: QrVersions.auto,
+//               size: 200.0,
+//             ),
+//             // Your widget content goes here
+//           ],
+//         ),
+//       ),
+//       // Your additional widgets, navigation, etc., can be added here
+//     );
+//   }
+// }
