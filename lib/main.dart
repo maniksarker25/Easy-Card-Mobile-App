@@ -98,10 +98,10 @@ class _MyHomePageState extends State<MyHomePage> {
       body: LoginPage(),
       floatingActionButton: ElevatedButton.icon(
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => AnotherPage()),
-          );
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(builder: (context) => AnotherPage()),
+          // );
         },
         icon: Icon(Icons.send, color: Colors.white),
         label: Text(

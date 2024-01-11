@@ -106,7 +106,10 @@ class _MyComponentState extends State<MyComponent> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => AnotherPage()),
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          AnotherPage(profile: profiles[_currentPage]),
+                    ),
                   );
                 },
                 child: Row(
