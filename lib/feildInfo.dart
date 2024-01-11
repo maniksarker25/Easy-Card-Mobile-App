@@ -11,7 +11,7 @@ class FieldInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> fields =
         List<Map<String, dynamic>>.from(profile['fields']);
-    print(fields);
+    // print(fields);
 
     return Container(
       padding: EdgeInsets.all(10.0),
@@ -162,7 +162,7 @@ class FieldInfo extends StatelessWidget {
   Widget SocialMediaRow(List<IconData> iconDataList) {
     return Row(
       children: iconDataList.map((iconData) {
-        print(iconData);
+        // print(iconData);
         return Padding(
           padding: EdgeInsets.only(
               right: 20, top: 8), // Adjust the right padding as needed
@@ -192,7 +192,7 @@ Widget ImageRow(String imageUrl) {
 //---------------------
 Widget GalleryRow(dynamic imageUrls) {
   List<String> imageUrlList = List<String>.from(imageUrls ?? []);
-  print(imageUrlList);
+  // print(imageUrlList);
   return Container(
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,

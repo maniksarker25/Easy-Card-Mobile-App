@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
 class AnotherPage extends StatelessWidget {
+  final Map<String, dynamic> profile;
+
+  AnotherPage({required this.profile});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Send Your Card",
+          "Send Your Card : $profile._id",
           style: TextStyle(color: Colors.white), // Set app bar title text color
         ),
         backgroundColor: Colors.black, // Set app bar background color
