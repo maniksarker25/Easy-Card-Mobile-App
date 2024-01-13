@@ -10,6 +10,7 @@ class ProfileComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String image = profile['display']['ProfileImage'];
+    // print(image);
     String prefix = profile['profileInfo']['prefix'];
     String firstName = profile['profileInfo']['first_name'];
     String lastName = profile['profileInfo']['last_name'];
@@ -18,7 +19,6 @@ class ProfileComponent extends StatelessWidget {
     String company = profile['profileInfo']['company'];
     String suffix = profile['profileInfo']['suffix'];
     String jobTitle = profile['profileInfo']['job_title'];
-    // print('Image value: $image');
     bool isBase64Image = image?.startsWith('data:image') ?? false;
     String logo = profile['display']['Logo'];
     bool isBase64Logo = logo?.startsWith('data:image') ?? false;
@@ -59,17 +59,24 @@ class ProfileComponent extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        isBase64Image
-                            ? Image.memory(
-                                _decodeBase64Image(image!),
-                                width: double.infinity,
-                                fit: BoxFit.cover,
-                              )
-                            : Image.network(
-                                image!,
-                                width: double.infinity,
-                                fit: BoxFit.cover,
-                              ),
+                        if (image != null && image.isNotEmpty)
+                          isBase64Image // Assuming isBase64() is a function to check if the image is base64 encoded
+                              ? Image.memory(
+                                  _decodeBase64Image(image),
+                                  width: double.infinity,
+                                  fit: BoxFit.cover,
+                                )
+                              : Image.network(
+                                  "https://suva-trip-exist.s3.amazonaws.com/man.png",
+                                  width: double.infinity,
+                                  fit: BoxFit.cover,
+                                )
+                        else
+                          Image.asset(
+                            'assets/images/profile-image.png', // Replace with your local image file path
+                            // width: double.infinity,
+                            // fit: BoxFit.cover,
+                          ),
                         SizedBox(height: 0),
                         Container(
                           color: Colors.blue,
@@ -83,10 +90,11 @@ class ProfileComponent extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(
-                                      '$prefix. $firstName $lastName',
+                                      '$prefix $firstName $lastName',
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 30,
+                                          fontFamily: "Roboto",
                                           fontWeight: FontWeight.w600),
                                       textAlign: TextAlign.center,
                                     ),
@@ -99,6 +107,7 @@ class ProfileComponent extends StatelessWidget {
                                             style: TextStyle(
                                               color: Colors.white,
                                               fontSize: 25,
+                                              fontFamily: "Roboto",
                                               fontWeight: FontWeight.bold,
                                             ),
                                           ),
@@ -106,6 +115,7 @@ class ProfileComponent extends StatelessWidget {
                                             text: '($preferredName)',
                                             style: TextStyle(
                                               color: Colors.white,
+                                              fontFamily: "Roboto",
                                               fontSize: 20,
                                               fontWeight: FontWeight.w600,
                                             ),
@@ -121,6 +131,7 @@ class ProfileComponent extends StatelessWidget {
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontSize: 25,
+                                            fontFamily: 'Roboto',
                                             fontWeight: FontWeight.w500),
                                         textAlign: TextAlign.center,
                                       ),
@@ -129,14 +140,16 @@ class ProfileComponent extends StatelessWidget {
                                       "$department",
                                       style: TextStyle(
                                           color: Colors.white,
-                                          fontStyle: FontStyle.italic,
+                                          // fontStyle: FontStyle.italic,
                                           fontSize: 20),
                                       textAlign: TextAlign.center,
                                     ),
                                     Text(
                                       "$company",
                                       style: TextStyle(
-                                          color: Colors.white, fontSize: 20),
+                                          fontStyle: FontStyle.italic,
+                                          color: Colors.white,
+                                          fontSize: 20),
                                       textAlign: TextAlign.center,
                                     )
                                   ],
@@ -213,5 +226,3 @@ Uint8List _decodeBase64Image(String base64String) {
       base64String.replaceFirst(RegExp(r'data:image/[^;]+;base64,'), ''));
   return decodedBytes;
 }
-
-// kdjfkdj
