@@ -3,6 +3,7 @@ import 'package:qr_flutter/qr_flutter.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:clipboard/clipboard.dart';
 import 'package:share/share.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AnotherPage extends StatelessWidget {
   final Map<String, dynamic> profile;
@@ -288,7 +289,7 @@ class ShareOptions extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.facebook),
+            leading: Icon(FontAwesomeIcons.twitter),
             title: Text('Share on Twitter'),
             onTap: () {
               // Share on Twitter
