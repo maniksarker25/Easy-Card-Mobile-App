@@ -194,7 +194,7 @@ class AnotherPage extends StatelessWidget {
                       children: [
                         SizedBox(
                             width: 8), // Add some space between icon and text
-                        Text('Save QR code to photos',
+                        Text('Save QR code to photo',
                             style: TextStyle(
                                 color: Colors.white)), // Set text color
                       ],
@@ -311,38 +311,3 @@ class ShareOptions extends StatelessWidget {
     );
   }
 }
-
-// another way ------------------
-
-// import 'package:flutter/material.dart';
-// import 'package:qr_flutter/qr_flutter.dart';
-
-// class AnotherPage extends StatelessWidget {
-//   final Map<String, dynamic> profile;
-
-//   AnotherPage({required this.profile});
-//   @override
-//   Widget build(BuildContext context) {
-//     // Your widget logic goes here
-
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Another Page'),
-//       ),
-//       body: Center(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: <Widget>[
-//             QrImageView(
-//               data: '1234567890',
-//               version: QrVersions.auto,
-//               size: 200.0,
-//             ),
-//             // Your widget content goes here
-//           ],
-//         ),
-//       ),
-//       // Your additional widgets, navigation, etc., can be added here
-//     );
-//   }
-// }
