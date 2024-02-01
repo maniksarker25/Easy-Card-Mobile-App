@@ -43,6 +43,7 @@ class _MyComponentState extends State<MyComponent> {
 
   @override
   Widget build(BuildContext context) {
+    print(profiles);
     return Scaffold(
       key: _scaffoldKey,
       appBar: PreferredSize(
@@ -161,6 +162,3 @@ class ProfilePage extends StatelessWidget {
     );
   }
 }
-
-
-// wo w
