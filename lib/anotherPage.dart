@@ -147,14 +147,20 @@ class AnotherPage extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.only(bottom: 3),
                   child: ElevatedButton.icon(
+                    // onPressed: () {
+                    //   // Show bottom sheet with sharing options
+                    //   showModalBottomSheet(
+                    //     context: context,
+                    //     builder: (BuildContext context) {
+                    //       return ShareOptions();
+                    //     },
+                    //   );
+                    // },
                     onPressed: () {
-                      // Show bottom sheet with sharing options
-                      showModalBottomSheet(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return ShareOptions();
-                        },
-                      );
+                      // Share on Facebook
+                      Share.share(
+                          'https://tamastoria.pro/${profile['setting']?['url'] ?? ''}');
+                      // Navigator.pop(context); // Close the bottom sheet
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Colors.grey,
