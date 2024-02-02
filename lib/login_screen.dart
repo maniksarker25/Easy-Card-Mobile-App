@@ -125,8 +125,8 @@ class _LoginPageState extends State<LoginPage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>
-                                    MyComponent(userEmail: "tom@gmail.com")),
+                                builder: (context) => MyComponent(
+                                    userEmail: "password@gmail.com")),
                           );
                         },
                         style: ButtonStyle(

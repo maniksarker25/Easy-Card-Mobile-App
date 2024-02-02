@@ -14,7 +14,7 @@ class AnotherPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Send Your Card $profile",
+          "Send Your Card",
           style: TextStyle(color: Colors.white), // Set app bar title text color
         ),
         backgroundColor: Colors.black, // Set app bar background color

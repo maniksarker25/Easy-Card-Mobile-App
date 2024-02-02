@@ -61,31 +61,31 @@ class FieldInfo extends StatelessWidget {
                   field["label"],
                   hexToColor(profile["display"]["primaryColor"]))
             else if (field['type'] == 'Skype')
-              TwoDataRow(
+              SnapchatRow(
                   FontAwesomeIcons.snapchat,
                   field['number'],
                   field["label"],
                   hexToColor(profile["display"]["primaryColor"]))
             else if (field['type'] == 'Snapchat')
-              TwoDataRow(
+              SnapchatRow(
                   FontAwesomeIcons.snapchat,
                   field['number'],
                   field["label"],
                   hexToColor(profile["display"]["primaryColor"]))
             else if (field['type'] == 'Signal')
-              TwoDataRow(
+              SnapchatRow(
                   FontAwesomeIcons.signal,
                   field['number'],
                   field["label"],
                   hexToColor(profile["display"]["primaryColor"]))
             else if (field['type'] == 'Telegram')
-              TwoDataRow(
+              SnapchatRow(
                   FontAwesomeIcons.telegram,
                   field['number'],
                   field["label"],
                   hexToColor(profile["display"]["primaryColor"]))
             else if (field['type'] == 'Discord')
-              TwoDataRow(
+              SnapchatRow(
                   FontAwesomeIcons.discord,
                   field['number'],
                   field["label"],
@@ -139,7 +139,7 @@ class FieldInfo extends StatelessWidget {
     return Row(
       children: [
         Container(
-          padding: EdgeInsets.all(8), // Add padding here
+          padding: EdgeInsets.all(10), // Add padding here
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: iconBgColor,
@@ -171,7 +171,8 @@ class FieldInfo extends StatelessWidget {
     return Row(
       children: [
         Container(
-          padding: EdgeInsets.all(8),
+          margin: EdgeInsets.only(top: 16),
+          padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: iconBgColor,
@@ -180,7 +181,7 @@ class FieldInfo extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.only(left: 20),
-          child: Text(text, style: TextStyle(fontSize: 22)),
+          child: Text(text, style: TextStyle(fontSize: 20)),
         ),
       ],
     );
@@ -193,7 +194,7 @@ class FieldInfo extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            padding: EdgeInsets.all(8),
+            padding: EdgeInsets.all(10),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: iconBgColor,
@@ -205,8 +206,43 @@ class FieldInfo extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(text, style: TextStyle(fontSize: 22)),
-                SizedBox(height: 5), // Adding some space between texts
+                Text(text, style: TextStyle(fontSize: 20)),
+                SizedBox(height: 2), // Adding some space between texts
+                Text(
+                  subText,
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget SnapchatRow(
+      IconData iconData, String text, String subText, Color iconBgColor) {
+    return Container(
+      margin: EdgeInsets.only(top: 10), // Add margin top and bottom
+      child: Row(
+        children: [
+          Container(
+            padding: EdgeInsets.only(left: 10, right: 10, top: 8, bottom: 10),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: iconBgColor,
+            ),
+            child: Icon(iconData, size: 25, color: Colors.white),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(text, style: TextStyle(fontSize: 20)),
+                SizedBox(height: 2), // Adding some space between texts
                 Text(
                   subText,
                   style: TextStyle(
@@ -227,7 +263,7 @@ class FieldInfo extends StatelessWidget {
         return Padding(
           padding: EdgeInsets.only(right: 20, top: 8),
           child: Container(
-            padding: EdgeInsets.all(8),
+            padding: EdgeInsets.all(10),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: iconColor,

@@ -97,12 +97,13 @@ class _MyComponentState extends State<MyComponent> {
             right: 5,
             child: Container(
               decoration: BoxDecoration(
-                borderRadius:
-                    BorderRadius.circular(12), // Adjust the radius as needed
-                color: Colors.black,
+                borderRadius: BorderRadius.circular(28),
+                color: Color.fromARGB(255, 29, 28, 28), // Change to gray
               ),
               padding: EdgeInsets.symmetric(
-                  horizontal: 10, vertical: 5), // Adjust padding as needed
+                horizontal: 28, // Increased horizontal padding to 25px
+                vertical: 14, // Increased vertical padding to 13px
+              ),
               child: InkWell(
                 onTap: () {
                   Navigator.push(
@@ -118,16 +119,14 @@ class _MyComponentState extends State<MyComponent> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    FaIcon(
-                      FontAwesomeIcons
-                          .paperPlane, // Replace with the Font Awesome icon you want
+                    Icon(
+                      Icons.send,
                       color: Colors.white,
-                      size: 10, // Adjust the size as needed
-                    ), // Replace with your icon
-                    SizedBox(width: 3), // Adjust the gap as needed
+                    ),
+                    SizedBox(width: 5),
                     Text(
                       "Send",
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
                   ],
                 ),
